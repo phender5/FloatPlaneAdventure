@@ -24,5 +24,7 @@ Something Special... : K
 
 ## Advanced Mode
 
-In this mode, for each level the player and enemies both move faster with increased firing rate.
+In this mode, for each level the player and enemies both move faster with increased firing rate. 
+
+The game also does not end once reacing $1,000,000 in this mode.
 
