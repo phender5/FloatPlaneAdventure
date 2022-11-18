@@ -16,7 +16,7 @@ TWO_CLICK = pygame.transform.scale(TWO_CLICK, (150,150))
 FLOAT_PLANE = pygame.image.load(os.path.join("assets", "airplane.gif"))
 
 # Lasers
-YELLOW_LASER = pygame.image.load(os.path.join("assets", "laser.png"))
+LASER = pygame.image.load(os.path.join("assets", "laser.png"))
 
 # Ken
 KEN = pygame.image.load(os.path.join("assets", "ken.png"))
@@ -45,20 +45,20 @@ class Laser:
         return collide(self, obj)
 
 
-class Ship:
+class Plane:
     COOLDOWN = 25
 
     def __init__(self, x, y, health=100):
         self.x = x
         self.y = y
         self.health = health
-        self.ship_img = None
+        self.plane_img = None
         self.laser_img = None
         self.lasers = []
         self.cool_down_counter = 0
 
     def draw(self, window):
-        window.blit(self.ship_img, (self.x, self.y))
+        window.blit(self.plane_img, (self.x, self.y))
         for laser in self.lasers:
             laser.draw(window)
 
@@ -85,18 +85,18 @@ class Ship:
             self.cool_down_counter = 1
 
     def get_width(self):
-        return self.ship_img.get_width()
+        return self.plane_img.get_width()
 
     def get_height(self):
-        return self.ship_img.get_height()
+        return self.plane_img.get_height()
 
 
-class Player(Ship):
+class Player(Plane):
     def __init__(self, x, y, health=100):
         super().__init__(x, y, health)
-        self.ship_img = FLOAT_PLANE
-        self.laser_img = YELLOW_LASER
-        self.mask = pygame.mask.from_surface(self.ship_img)
+        self.plane_img = FLOAT_PLANE
+        self.laser_img = LASER
+        self.mask = pygame.mask.from_surface(self.plane_img)
         self.max_health = health
 
     def move_lasers(self, vel, objs):
@@ -119,25 +119,25 @@ class Player(Ship):
         self.healthbar(window)
 
     def healthbar(self, window):
-        pygame.draw.rect(window, (255,0,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width(), 10))
-        pygame.draw.rect(window, (0,255,0), (self.x, self.y + self.ship_img.get_height() + 10, self.ship_img.get_width() * (self.health/self.max_health), 10))
+        pygame.draw.rect(window, ('red'), (self.x, self.y + self.plane_img.get_height() + 10, self.plane_img.get_width(), 10))
+        pygame.draw.rect(window, ('green'), (self.x, self.y + self.plane_img.get_height() + 10, self.plane_img.get_width() * (self.health/self.max_health), 10))
 
 
-class Enemy(Ship):
+class Enemy(Plane):
 
     def __init__(self, x, y, health=100):
         super().__init__(x, y, health)
-        self.ship_img = TWO_CLICK
-        self.mask = pygame.mask.from_surface(self.ship_img)
+        self.plane_img = TWO_CLICK
+        self.mask = pygame.mask.from_surface(self.plane_img)
 
     def move(self, vel):
         self.y += vel
 
-class Ken(Ship):
+class Ken(Plane):
     def __init__(self, x, y, health=100):
         super().__init__(x, y, health)
-        self.ship_img = KEN
-        self.mask = pygame.mask.from_surface(self.ship_img)
+        self.plane_img = KEN
+        self.mask = pygame.mask.from_surface(self.plane_img)
 
 
 
@@ -182,9 +182,9 @@ def main():
     def redraw_window():
         WIN.blit(BG, (0,0))
         # draw text
-        lives_label = main_font.render(f"Lives: {lives}", 1, (255,255,255))
-        money_label = main_font.render(f"${money}", 1, (255,255,255))
-        level_label = main_font.render(f"Level: {level}", 1, (255,255,255))
+        lives_label = main_font.render(f"Lives: {lives}", 1, ("white"))
+        money_label = main_font.render(f"${money}", 1, ("gold"))
+        level_label = main_font.render(f"Level: {level}", 1, ("white"))
 
         WIN.blit(lives_label, (10, 10))
         WIN.blit(money_label, (WIDTH/2 - money_label.get_width()/2, 10))
@@ -215,7 +215,7 @@ def main():
         clock.tick(FPS)
         redraw_window()
 
-        if money >= 1000000:
+        if money >= 1000000 and not advance_mode:
             for enemy in enemies:
                 enemies.remove(enemy)
             won = True

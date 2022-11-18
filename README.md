@@ -1,4 +1,4 @@
-# Float Plane Adventure Documentation
+# Float Plane Adventure
 
 ## Run Game
 
@@ -22,7 +22,7 @@ Advanced Mode: L
 
 Something Special... : K
 
-## Advanced Mode:
+## Advanced Mode
 
 In this mode, for each level the player and enemies both move faster with increased firing rate.
 
