@@ -8,21 +8,21 @@ python3 main.py
 
 Begin: Mouseclick
 
-Move up: w
+Move Up: W
 
-Move down: s
+Move Down: S
 
-Move left: a
+Move Left: A
 
-Move right: d
+Move Right: D
 
-Shoot laser: Space bar
+Shoot Laser: Space Bar
 
-Advanced mode: l
+Advanced Mode: L
 
-Something special... : k
+Something Special... : K
 
-### Advanced Mode:
+## Advanced Mode:
 
-With each level the player and enemies both move faster with increased firing rate.
+In this mode, for each level the player and enemies both move faster with increased firing rate.
 
