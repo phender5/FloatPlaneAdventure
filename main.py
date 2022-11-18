@@ -199,7 +199,7 @@ def main():
 
         if lost:
             lost_label = message_font.render("You Lost!!", 1, ("indigo"))
-            WIN.blit(lost_label, (WIDTH/2 - lost_label.get_width()/2, 350))
+            WIN.blit(lost_label, (WIDTH/2 - lost_label.get_width()/2, 300))
 
         if money >= 1000000:
             won_label = message_font.render("We're going to Pender!!", 1, ("darkorange"))
