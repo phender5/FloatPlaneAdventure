@@ -1,8 +1,12 @@
 # Float Plane Adventure
 
+## Install pygame
+
+pip install pygame
+
 ## Run Game
 
-python3 main.py
+python main.py
 
 ## Controls
 
