@@ -1,5 +1,9 @@
 # Float Plane Adventure
 
+### Description
+
+It's time to get in your float plane and fight off the incoming swarm of two-click!
+
 ## Install pygame
 
 pip install pygame
